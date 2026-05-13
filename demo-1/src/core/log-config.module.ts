@@ -21,6 +21,7 @@ import { LoggerModule } from 'nestjs-pino';
               target: 'pino-roll',
               options: {
                 file: path.join('log', 'log-info.txt'),
+                datePattern: 'YYYY-MM-DD',
                 frequency: 'daily',
                 size: '10m',
                 mkdir: true,
@@ -31,6 +32,7 @@ import { LoggerModule } from 'nestjs-pino';
               target: 'pino-roll',
               options: {
                 file: path.join('log', 'log-error.txt'),
+                datePattern: 'YYYY-MM-DD',
                 frequency: 'daily',
                 size: '10m',
                 mkdir: true,
