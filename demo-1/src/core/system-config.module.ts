@@ -30,11 +30,13 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
         [ConfigEnum.DB_HOST]: Joi.string().ip().required(), // 被 required 的字段，必须在 envFilePath 合成的 环境变量里，否则会报错。
         [ConfigEnum.DB_PORT]: Joi.number()
           .default(3306)
-          .valid(3306, 3308, 3310), // 验证 DB_PORT 的值 只能是一个数字，并且 只能是 3306, 3308, 3310 中的一个。默认 3306
+          .valid(3306, 3308, 3080), // 验证 DB_PORT 的值 只能是一个数字，并且 只能是 3306, 3308, 3310 中的一个。默认 3306
         NODE_ENV: Joi.string()
           .valid('development', 'production')
           .default('development'), // 设置启动命令 命令行的 NODE_ENV 只能是 development 或者 production
         [ConfigEnum.DB_NAME]: Joi.string().required(),
+        [ConfigEnum.DB_USER_NAME]: Joi.string().required(),
+        [ConfigEnum.DB_PASSWORD]: Joi.string().required(),
         [ConfigEnum.DB_SYNC]: Joi.boolean().default(false),
       }),
     }),
