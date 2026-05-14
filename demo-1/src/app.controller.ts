@@ -27,4 +27,10 @@ export class AppController {
   getV2Hello(): string {
     return 'Hello test V2......';
   }
+
+  @Get('/test-redis')
+  getTestRedis() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return this.appService.getTestRedis();
+  }
 }

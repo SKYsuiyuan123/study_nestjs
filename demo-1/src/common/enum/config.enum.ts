@@ -23,6 +23,15 @@ export enum ConfigEnum {
   /** 服务监听端口号 */
   SERVER_PORT = 'SERVER_PORT',
 
+  /** redis host */
+  REDIS_HOST = 'REDIS_HOST',
+
+  /** redis port */
+  REDIS_PORT = 'REDIS_PORT',
+
+  /** redis password */
+  REDIS_PASSWORD = 'REDIS_PASSWORD',
+
   /** 当前运行环境 */
   NODE_ENV = 'NODE_ENV',
 
