@@ -979,9 +979,9 @@
     webpack-node-externals "3.0.0"
 
 "@nestjs/common@^11.0.1":
-  version "11.1.19"
-  resolved "https://registry.npmmirror.com/@nestjs/common/-/common-11.1.19.tgz#50ba93ae45ebaeda6163554b8e2ecec545a25c92"
-  integrity sha512-qeiTt2tv+e5QyDKqG8HlVZb2wx64FEaSGFJouqTSRs+kG44iTfl3xlz1XqVped+rihx4hmjWgL5gkhtdK3E6+Q==
+  version "11.1.20"
+  resolved "https://registry.npmmirror.com/@nestjs/common/-/common-11.1.20.tgz#23339b2ffb10407e95bb8967c78d654940b508e0"
+  integrity sha512-uivaQnTwnfnW1cam8rlh9Xpxvvq+9zKs5ywHWtHRHu1CSQ2FnsLvDewP9Ybhyuf6l075BXKgbixxyW9OKZGpmA==
   dependencies:
     uid "2.0.2"
     file-type "21.3.4"
@@ -999,9 +999,9 @@
     lodash "4.18.1"
 
 "@nestjs/core@^11.0.1":
-  version "11.1.19"
-  resolved "https://registry.npmmirror.com/@nestjs/core/-/core-11.1.19.tgz#d724f1afc0caac29e005464f0f659425fc80235b"
-  integrity sha512-6nJkWa2efrYi+XlU686J9y5L7OvxpLVjT0T/sxRKE7Jvpffiihelup4WSvLvRhdHDjj/5SuoWEwqReXAaaeHmw==
+  version "11.1.20"
+  resolved "https://registry.npmmirror.com/@nestjs/core/-/core-11.1.20.tgz#ea528254c3e73db4251b67ceba76bb6206df9534"
+  integrity sha512-RlaeQctEtSNrc3SxwQDnAxv/R22ww2t5dbP8OMzaghXofUPRCe2dXhXZSlKMkCyCSEWX+tMhESlGRB5rcJhYTQ==
   dependencies:
     uid "2.0.2"
     "@nuxt/opencollective" "0.4.1"
@@ -1011,9 +1011,9 @@
     tslib "2.8.1"
 
 "@nestjs/platform-express@^11.0.1":
-  version "11.1.19"
-  resolved "https://registry.npmmirror.com/@nestjs/platform-express/-/platform-express-11.1.19.tgz#e55f5078396b2285344f95f2b530b648e844cd4c"
-  integrity sha512-Vpdv8jyCQdThfoTx+UTn+DRYr6H6X02YUqcpZ3qP6G3ZUwtVp7eS+hoQPGd4UuCnlnFG8Wqr2J9bGEzQdi1rIg==
+  version "11.1.20"
+  resolved "https://registry.npmmirror.com/@nestjs/platform-express/-/platform-express-11.1.20.tgz#453dea56ba217b6184cc8ec78abd66698cbcb5f0"
+  integrity sha512-HFJ/bf189AGziCp7o9DPdPEgj7LXvCWswR3hBNiVCIo3SwOwTIss1BsQWCCJVAtVYTmwIHOI0i0k9dMGXh3Hew==
   dependencies:
     cors "2.8.6"
     express "5.2.1"
@@ -1033,9 +1033,9 @@
     pluralize "8.0.0"
 
 "@nestjs/testing@^11.0.1":
-  version "11.1.19"
-  resolved "https://registry.npmmirror.com/@nestjs/testing/-/testing-11.1.19.tgz#1bb72dbeb4de6fee23d3f1efe310970e5c9b0cb7"
-  integrity sha512-/UFNWXvPEdu4v4DlC5oWLbGKmD27LehLK06b8oLzs6D6lf4vAQTdST8LRAXBadyMUQnVEQWMuBo3CtAVtlfXtQ==
+  version "11.1.20"
+  resolved "https://registry.npmmirror.com/@nestjs/testing/-/testing-11.1.20.tgz#737315b81fded21e778fe65c7dc4cdd72239568c"
+  integrity sha512-aBW6S+4Dz22qt3+oPp2SplsagyasHqj1NsNoWkFqCjGo+9BLh9lv5wm9aoHKeJts7XM9CcoeJi+t2rvtQIPWIg==
   dependencies:
     tslib "2.8.1"
 
@@ -2290,6 +2290,11 @@ content-type@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmmirror.com/content-type/-/content-type-1.0.5.tgz#8b773162656d1d1086784c8f23a54ce6d73d7918"
   integrity sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==
+
+content-type@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/content-type/-/content-type-2.0.0.tgz#2fb3ede69dffa0af78ca7c4ce7589680638b56df"
+  integrity sha512-j/O/d7GcZCyNl7/hwZAb606rzqkyvaDctLmckbxLzHvFBzTJHuGEdodATcP3yIRoDrLHkIATJuvzbFlp/ki2cQ==
 
 convert-source-map@^2.0.0:
   version "2.0.0"
@@ -5181,11 +5186,11 @@ type-is@^1.6.18:
     mime-types "~2.1.24"
 
 type-is@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmmirror.com/type-is/-/type-is-2.0.1.tgz#64f6cf03f92fce4015c2b224793f6bdd4b068c97"
-  integrity sha512-OZs6gsjF4vMp32qrCbiVSkrFmXtG/AZhY3t0iAMrMBiAZyV9oALtXO8hsrHbMXF9x6L3grlFuwW2oAz7cav+Gw==
+  version "2.1.0"
+  resolved "https://registry.npmmirror.com/type-is/-/type-is-2.1.0.tgz#71d1a7053293582e16ac9f3ebaf1ab9aa49e5570"
+  integrity sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==
   dependencies:
-    content-type "^1.0.5"
+    content-type "^2.0.0"
     media-typer "^1.1.0"
     mime-types "^3.0.0"
 

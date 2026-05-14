@@ -25,4 +25,13 @@ export enum ConfigEnum {
 
   /** 当前运行环境 */
   NODE_ENV = 'NODE_ENV',
+
+  /** 是否允许跨域 */
+  CORS = 'CORS',
+
+  /** api 前缀 */
+  API_PREFIX = 'API_PREFIX',
+
+  /** api version */
+  API_VERSION = 'API_VERSION',
 }

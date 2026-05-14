@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Version } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 import { ConfigEnum } from './common/enum/config.enum';
@@ -20,5 +20,11 @@ export class AppController {
     console.log('DB_TYPE', this.configService.get(ConfigEnum.DB_TYPE));
 
     return this.appService.getHello();
+  }
+
+  @Get('/test-hello')
+  @Version('2')
+  getV2Hello(): string {
+    return 'Hello test V2......';
   }
 }
