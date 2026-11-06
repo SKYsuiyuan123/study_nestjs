@@ -1,0 +1,26 @@
+{
+  "name": "node-env",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev-env": "dotenvx run -- node index.js",
+    "dev": "node --env-file=.env index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.18.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@12.18.0",
+  "type": "module",
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^2.38.2"
+  }
+}

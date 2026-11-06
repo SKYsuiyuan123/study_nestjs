@@ -1,0 +1,252 @@
+---
+lockfileVersion: '9.0'
+
+importers:
+
+  .:
+    configDependencies: {}
+    packageManagerDependencies:
+      pnpm:
+        specifier: 12.18.0
+        version: 12.18.0
+
+packages:
+
+  '@pnpm/exe.android-arm64@12.18.0':
+    resolution: {integrity: sha512-fOF6IwgvnUKEmVedGqiAsNPfN2Ry8GvaqzSQOiF3RJFbpBfPKO/6YT54s1GjToyYinRxw9preHHPe4y2N3SzhA==}
+    cpu: [arm64]
+    os: [android]
+
+  '@pnpm/exe.android-x64@12.18.0':
+    resolution: {integrity: sha512-6OiolnaCsB3/GcJ9XNrenbUH3zFHRJ+5QynrMUUEyThbgnnCzWxa199hpQlOmxN4rAXuYQ0IYgWFNUZxyzg31Q==}
+    cpu: [x64]
+    os: [android]
+
+  '@pnpm/exe.darwin-arm64@12.18.0':
+    resolution: {integrity: sha512-zkq+4YzVIX39ETYLyC3W7LY7MpHEU/J3nRhHl4i2yPld2Cf2+rEKRh3ejJ4AmaQ77HHJLCktY4Z3jq0fpcxFXg==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@pnpm/exe.darwin-x64@12.18.0':
+    resolution: {integrity: sha512-qMsL9qx92unOTa6hgkfiTJv8ceZaTx0IQg7InhYDVX2ZrTECujaVEEVypnJK5m3eGUsP1KD7Y4qIgleCwfRsYw==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@pnpm/exe.freebsd-x64@12.18.0':
+    resolution: {integrity: sha512-/9vy/4ms52cU4MjZ5NhHd6N2d9L9W0kARf5/ff2tweAHu0VeUzs/0qp/7ZHFuddm2Wa/m0AKQoPum9AVUCqKsw==}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@pnpm/exe.linux-arm64-musl@12.18.0':
+    resolution: {integrity: sha512-Vp+TIMPPyackVCXkOdEKH/RmAn/r07EcIyrgZYQK7VrkksqZOie0GnWIx+85mPqeFEYCRtXIZAFJ9L4ceTndDg==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/exe.linux-arm64@12.18.0':
+    resolution: {integrity: sha512-2dpyVBCHT+FfpuQh9i+7MXAqNWYLCvD5vYr5p6Eimxoga8USLnjbUgyj72AOrO0hjc5ri3TEFP3jiyBHjkSZpQ==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-ppc64@12.18.0':
+    resolution: {integrity: sha512-BBOOOfNJ2QwIIya3eKqOjiN4WNTszfRz7HCvw9XggcT7+ftMjNP8XJ/GfW+ltCBeUFR9d8WBVsr2m/NLjX2CZQ==}
+    cpu: [ppc64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-riscv64@12.18.0':
+    resolution: {integrity: sha512-7kMN77xSOYJX8GPSH5RbNAc5oM61LMmcSUukDDUwllnZPXm8GRPskCNsTWy8SCw01Kr1FB+5SwGNMiTdiziLNQ==}
+    cpu: [riscv64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-s390x@12.18.0':
+    resolution: {integrity: sha512-htuSCpEcmDzhKoJqXbPkvfr176dBHU0QIF5mWcRiqxRXAB/1JoYiMYotfjWpk+ztgpB9qlx4XnWlLFAf7gzc6g==}
+    cpu: [s390x]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.linux-x64-musl@12.18.0':
+    resolution: {integrity: sha512-Uj+vzfIQ62kDP10x36yHZIXVs5ohdNtiPYwn5FhCLlNScHPo0OAI+ShGDtLofiBXKE7umu71Jmjm7N8a8zVcDw==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/exe.linux-x64@12.18.0':
+    resolution: {integrity: sha512-OJ+X2wcraldCwj75pCIerWARQSRpdfj0eBTs/2ODyhfeW46ylOnjTIE/GKra6Mn6E72/gBmXS8igrUioa+F9fQ==}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@pnpm/exe.win32-arm64@12.18.0':
+    resolution: {integrity: sha512-wEY6jiACGcbhhi5yD59doHqNTndS7AaujaPmtWAu1DKkHru2hy5fJ9yUGecW72Ypaw2/I3BEprfMOopap2NQtw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@pnpm/exe.win32-x64@12.18.0':
+    resolution: {integrity: sha512-5FJkghO7RLRkQpWxeVEygW9XsmnNuxzPfXbgwFWCHsFyFhpDn/vOdL88ToQEM0Kt5igdW5s6U0/IDH8Dvkt3pg==}
+    cpu: [x64]
+    os: [win32]
+
+  pnpm@12.18.0:
+    resolution: {integrity: sha512-nXiC1dyCFH7PxOBiqjSDTgrQKWcQoYN6ERWuASEn02txCeMhrBWYod0KZVl2gbHpmRfhLtDXSerpEYeUM2O+sw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe.android-arm64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.android-x64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.darwin-arm64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.darwin-x64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.freebsd-x64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-arm64-musl@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-arm64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-ppc64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-riscv64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-s390x@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-x64-musl@12.18.0':
+    optional: true
+
+  '@pnpm/exe.linux-x64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.win32-arm64@12.18.0':
+    optional: true
+
+  '@pnpm/exe.win32-x64@12.18.0':
+    optional: true
+
+  pnpm@12.18.0:
+    optionalDependencies:
+      '@pnpm/exe.android-arm64': 12.18.0
+      '@pnpm/exe.android-x64': 12.18.0
+      '@pnpm/exe.darwin-arm64': 12.18.0
+      '@pnpm/exe.darwin-x64': 12.18.0
+      '@pnpm/exe.freebsd-x64': 12.18.0
+      '@pnpm/exe.linux-arm64': 12.18.0
+      '@pnpm/exe.linux-arm64-musl': 12.18.0
+      '@pnpm/exe.linux-ppc64': 12.18.0
+      '@pnpm/exe.linux-riscv64': 12.18.0
+      '@pnpm/exe.linux-s390x': 12.18.0
+      '@pnpm/exe.linux-x64': 12.18.0
+      '@pnpm/exe.linux-x64-musl': 12.18.0
+      '@pnpm/exe.win32-arm64': 12.18.0
+      '@pnpm/exe.win32-x64': 12.18.0
+
+---
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    devDependencies:
+      '@dotenvx/dotenvx':
+        specifier: ^2.38.2
+        version: 2.38.2
+
+packages:
+
+  '@dotenvx/dotenvx@2.38.2':
+    resolution: {integrity: sha512-+tjy8o//H+ZkRfRWLh08UkLHCw/e74uIV27QOZ3RxKwXvGrxjEcQMfUvQJzkvK/qNTk/OsE1MlGiDB6iL+1X0g==, tarball: https://registry.npmjs.org/@dotenvx/dotenvx/-/dotenvx-2.38.2.tgz}
+    hasBin: true
+
+  '@dotenvx/primitives@3.3.1':
+    resolution: {integrity: sha512-ykX29rVnHwwV6m3AMmvR+niFSwhOG2TYttJjURz3n/3iHtpWC8gEptojYY+eHgBAV4fkaGRM1Rf0wgQ6/DeUYQ==, tarball: https://registry.npmjs.org/@dotenvx/primitives/-/primitives-3.3.1.tgz}
+
+  '@dotenvx/primitives@4.3.0':
+    resolution: {integrity: sha512-yTtZaVQt7DYnOaCm9BzhoTytGDAL5j49HCoFd9Vt/UlEFVSbkTEPHd23QmlPARYEqsJSUZEx43Avw9oQrWJINg==, tarball: https://registry.npmjs.org/@dotenvx/primitives/-/primitives-4.3.0.tgz}
+
+  '@dotenvx/providers@0.3.13':
+    resolution: {integrity: sha512-fF39zRYFyukQtjZJ8VyrAl6zsZo7t20ZD55QK+yN7VPS5gmEVHoIHwzNZGQHJDNA5A3evWiGM6547egI/sWahQ==, tarball: https://registry.npmjs.org/@dotenvx/providers/-/providers-0.3.13.tgz}
+
+  '@dotenvx/tooling@1.0.6':
+    resolution: {integrity: sha512-d1AhKqlprzjR7+/7YTYbf9lTjeIUxr2WN+gYL5jf9O25wymlVWzuwOujq9IWJOt33sGWcLjr1eswSOmqm4SRMg==, tarball: https://registry.npmjs.org/@dotenvx/tooling/-/tooling-1.0.6.tgz}
+
+  imurmurhash@0.1.4:
+    resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==, tarball: https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz}
+    engines: {node: '>=0.8.19'}
+
+  signal-exit@4.1.0:
+    resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==, tarball: https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz}
+    engines: {node: '>=14'}
+
+  undici@6.29.1:
+    resolution: {integrity: sha512-EvRlUt/QqAEvXdQeRMYUfwOQsfzpDztykrG2owGEE/rBOBoYv9uF39ZzsNDh4lTFHhTr2XOZjKkYgueD12ZmGA==, tarball: https://registry.npmjs.org/undici/-/undici-6.29.1.tgz}
+    engines: {node: '>=18.17'}
+
+  write-file-atomic@5.0.1:
+    resolution: {integrity: sha512-+QU2zd6OTD8XWIJCbffaiQeH9U73qIqafo1x6V1snCWYGJf6cVE0cDR4D8xRzcEnfI21IFrUPzPGtcPf8AC+Rw==, tarball: https://registry.npmjs.org/write-file-atomic/-/write-file-atomic-5.0.1.tgz}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  yocto-spinner@1.2.2:
+    resolution: {integrity: sha512-DODGl1wJjA/s5pnJFKau9lIYHT81lnhob1i3e1TjxZRxEhWRKl74nTbWE6H5KlkViQQTo/Z29YFdxzTZAMY3ng==, tarball: https://registry.npmjs.org/yocto-spinner/-/yocto-spinner-1.2.2.tgz}
+    engines: {node: '>=18.19'}
+
+  yoctocolors@2.2.0:
+    resolution: {integrity: sha512-xYqdZFUK/VYazNl/oCDYN+3WloWQwMfZxBoiNt6qNyk+xfOdi598muWE42rNZFp1kNOiqW936q5RhUdnpqElSg==, tarball: https://registry.npmjs.org/yoctocolors/-/yoctocolors-2.2.0.tgz}
+    engines: {node: '>=18'}
+
+snapshots:
+
+  '@dotenvx/dotenvx@2.38.2':
+    dependencies:
+      '@dotenvx/primitives': 3.3.1
+      '@dotenvx/providers': 0.3.13
+      '@dotenvx/tooling': 1.0.6
+      undici: 6.29.1
+      write-file-atomic: 5.0.1
+      yocto-spinner: 1.2.2
+
+  '@dotenvx/primitives@3.3.1': {}
+
+  '@dotenvx/primitives@4.3.0': {}
+
+  '@dotenvx/providers@0.3.13':
+    dependencies:
+      '@dotenvx/primitives': 4.3.0
+      '@dotenvx/tooling': 1.0.6
+
+  '@dotenvx/tooling@1.0.6': {}
+
+  imurmurhash@0.1.4: {}
+
+  signal-exit@4.1.0: {}
+
+  undici@6.29.1: {}
+
+  write-file-atomic@5.0.1:
+    dependencies:
+      imurmurhash: 0.1.4
+      signal-exit: 4.1.0
+
+  yocto-spinner@1.2.2:
+    dependencies:
+      yoctocolors: 2.2.0
+
+  yoctocolors@2.2.0: {}
