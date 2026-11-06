@@ -6,6 +6,8 @@
   "scripts": {
     "dev-env": "dotenvx run -- node index.js",
     "dev": "node --env-file=.env index.js",
+    "dev-load-file-1": "node load-file-1.js",
+    "dev-load-file-2": "node load-file-2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
