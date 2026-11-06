@@ -1,0 +1,7 @@
+{
+  "token_secret": "my_secret",
+  "db": {
+    "host": "localhost",
+    "port": 5432
+  }
+}

@@ -1,0 +1,5 @@
+token_secret: long-secret2
+db:
+  host: "localhost"
+  port: 66666
+  env: "default"

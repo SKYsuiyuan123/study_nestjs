@@ -1,0 +1,4 @@
+token_secret: long-secret-prod
+db:
+  host: "production-1"
+  port: 123666
