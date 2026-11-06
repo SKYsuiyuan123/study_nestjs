@@ -1,0 +1,8 @@
+db:
+  mysql1:
+    name: 'prod-db-1'
+    host: 'production.com'
+
+  mysql2:
+    name: 'prod-db-mysql2'
+    host: 'production.com'

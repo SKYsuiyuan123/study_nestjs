@@ -1,0 +1,18 @@
+db:
+  mysql1:
+    host: localhost
+    port: 3306
+    username: root
+    password: root
+    database: test_db
+
+  mysql2:
+    host: localhost
+    port: 3307
+    username: root
+    password: root
+    database: test_db2
+
+# SERVER_PORT 不会被加载进 process.env 里边，因此 process.env.SERVER_PORT 的值 由 .env 文件里的 SERVER_PORT 决定。
+SERVER_PORT: 3005
+BASE_URL: http://localhost:3005

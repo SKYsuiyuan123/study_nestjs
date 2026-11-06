@@ -12,6 +12,7 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
 
 @Module({
   imports: [
+    // envFilePath 指定 .env 文件后，@nestjs/config 会读取并解析这些文件，将键值对合并到 process.env 中。
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: [envFile, '.env'], // 优先读取 .env.development 或 .env.production 等文件，如果没有则读取 .env 文件。注意：前边的同名环境变量 会覆盖后边的。
