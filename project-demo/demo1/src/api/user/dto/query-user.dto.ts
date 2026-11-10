@@ -3,7 +3,12 @@ import { z } from 'zod';
 
 const GetUsersQuerySchema = z.object({
   // 分页参数，使用 z.coerce.number() 将字符串类型的参数转换为数字类型，并设置默认值。
-  pageNumber: z.coerce.number().int().min(1).default(1).describe('页码，默认值为 1'),
+  pageNumber: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .default(1)
+    .describe('页码，默认值为 1'),
   pageSize: z.coerce
     .number()
     .int()
@@ -23,6 +28,11 @@ const GetUsersQuerySchema = z.object({
     .transform((val) => val === 'true')
     .optional()
     .describe('是否活跃，可选参数，true 或 false。'),
+
+  gender: z
+    .enum(['1', '0'])
+    .optional()
+    .describe('性别，可选参数，1 表示男性，0 表示女性。'),
 });
 
 // 包装成 NestJS 的 DTO 类

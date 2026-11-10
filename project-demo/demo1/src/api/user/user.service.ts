@@ -29,15 +29,33 @@ export class UserService {
 
     // 动态构建查询条件
     const whereCondition: any = {};
+
     if (query.username) {
       whereCondition.username = query.username;
       // whereCondition.username = Like(`%${query.username}%`); // 支持模糊查询
+    }
+
+    if (query.gender) {
+      // 过滤关联表的 profile.gender。
+      whereCondition.profile = { gender: Number(query.gender) }; // 注意：这里的 gender 是字符串类型，需要转换为数字类型。
     }
 
     return this.userRepository.find({
       where: whereCondition,
       skip: (query.pageNumber - 1) * query.pageSize, // 跳过的数量
       take: query.pageSize, // 每页个数
+      relations: {
+        profile: true,
+        logs: true,
+      },
+      select: { // 只选择需要的字段，避免返回敏感信息。
+        id: true,
+        username: true,
+        profile: {
+          gender: true,
+          address: true,
+        },
+      },
     });
   }
 
