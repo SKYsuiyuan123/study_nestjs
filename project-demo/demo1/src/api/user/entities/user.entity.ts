@@ -1,4 +1,6 @@
 import {
+  AfterInsert,
+  AfterRemove,
   Column,
   Entity,
   OneToMany,
@@ -20,10 +22,22 @@ export class User {
   @Column()
   password: string;
 
-  @OneToOne('Profile', 'user') // 被拥有方：用字符串 'Profile' 指向对方，反向关系是对方的 user 属性
+  @OneToOne('Profile', 'user', { cascade: true }) // 被拥有方：用字符串 'Profile' 指向对方，反向关系是对方的 user 属性
   profile: Profile;
 
   // TypeORM 在按字符串找实体时，是严格区分大小写和单复数的
   @OneToMany('Logs', 'user') // 被拥有方：用字符串 'Logs' 指向对方，反向关系是对方的 user 属性
   logs: Logs[];
+
+  @AfterInsert()
+  afterInsert() {
+    console.log(`User entity inserted with id: ${this.id}`);
+  }
+
+  // 在删除实体后触发的钩子函数, 只有在实体被删除后才会触发, 如果使用软删除, 则不会触发。
+  // remove 方法会触发, delete 方法不会触发。
+  @AfterRemove()
+  afterRemove() {
+    console.log(`User entity removed with id: ${this.id}`);
+  }
 }

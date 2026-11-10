@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Like, Repository, UpdateResult } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { PinoLogger } from 'nestjs-pino';
 
 import { BusinessException } from '../../common/exceptions/business.exception.js';
@@ -119,15 +119,35 @@ export class UserService {
     );
   }
 
-  update(id: number, updateUserDto: UpdateUserDto): Promise<UpdateResult> {
-    return this.userRepository.update(id, updateUserDto);
+  async updateById(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+    // 只适合单模型更新
+    // return this.userRepository.update(id, updateUserDto);
+
+    const userTemp = await this.findUserProfileInfoByUserId(id);
+
+    if (userTemp === null) {
+      throw new BusinessException('当前用户不存在', 'USER_NOT_FOUND', 404);
+    }
+
+    // 适合多模型更新，先查询再更新。
+    // 联合更新：使用 merge 方法将查询到的实体对象和更新数据合并，然后再保存。这样可以触发实体的生命周期钩子函数。
+    const newUser = this.userRepository.merge(userTemp, updateUserDto);
+
+    return this.userRepository.save(newUser);
   }
 
-  remove(id: number) {
-    return this.userRepository.delete(id);
+  async remove(id: number) {
+    const user = await this.findById(id);
+
+    if (user === null) {
+      throw new BusinessException('当前用户不存在', 'USER_NOT_FOUND', 404);
+    }
+
+    // 先查询再删除，触发实体的生命周期钩子函数。
+    return this.userRepository.remove(user);
   }
 
-  getUserProfileInfoByUserId(id: number) {
+  findUserProfileInfoByUserId(id: number) {
     return this.userRepository.findOne({
       where: { id },
       relations: {
