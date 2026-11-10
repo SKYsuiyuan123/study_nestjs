@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 
 import { AppService } from './app.service.js';
+import { NoWrap } from './common/decorators/noWrap.decorator.js';
 
 @Controller()
 export class AppController {
@@ -12,6 +13,7 @@ export class AppController {
   }
 
   @Get('health')
+  @NoWrap() // @NoWrap 装饰器用于告诉 NestJS 不要对该接口的响应进行包装，直接返回原始数据。
   healthCheck(): {
     status: string;
     timestamp: string;

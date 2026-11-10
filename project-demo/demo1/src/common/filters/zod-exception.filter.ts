@@ -7,9 +7,10 @@ import {
 import type { Response } from 'express';
 
 type CustomResponseType = {
-  statusCode: number;
+  status: number;
   message: string | string[];
   errors?: string[]; // 可选的错误信息数组
+  timestamp: string;
 };
 
 @Catch(BadRequestException)
@@ -23,8 +24,9 @@ export class ZodExceptionFilter implements ExceptionFilter {
     const status = exception.getStatus();
 
     let customResponse: CustomResponseType = {
-      statusCode: status,
+      status: status,
       message: originalResponse || '请求参数错误',
+      timestamp: new Date().toISOString(),
     };
 
     // 判断是否是 Zod 抛出的标准校验错误
@@ -34,9 +36,10 @@ export class ZodExceptionFilter implements ExceptionFilter {
       const messages = originalResponse.errors.map((err: any) => err.message);
 
       customResponse = {
-        statusCode: status,
+        status: status,
         message: '请求参数错误', // 可以自定义一个统一的错误提示
         errors: messages, // 将错误信息数组添加到响应中
+        timestamp: new Date().toISOString(),
       };
     }
 
