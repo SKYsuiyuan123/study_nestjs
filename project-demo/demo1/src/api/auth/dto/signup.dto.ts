@@ -17,7 +17,7 @@ const SignUpSchema = z.object({
       error: (issue) =>
         issue.input === undefined ? '密码不能为空' : '密码必须是字符串',
     })
-    .min(1, '密码不能为空')
+    .min(6, '密码最小为 6 位')
     .describe('密码'),
 });
 
