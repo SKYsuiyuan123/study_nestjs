@@ -2,9 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { RequestMethod } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
-import { ZodValidationPipe } from 'nestjs-zod';
-
-import { ZodExceptionFilter } from './common/filters/zod-exception.filter.js';
 
 import { AppModule } from './app.module.js';
 
@@ -33,14 +30,9 @@ async function bootstrap() {
   });
 
   // 5. 挂载全局拦截器 (Interceptor) - 用于 请求/响应日志、耗时统计、统一响应数据格式化等
-
   // 6. 挂载全局守卫 (Guard) - 用于 权限校验、身份认证等
-
   // 7. 挂载全局管道 (Pipe) - 用于参数校验和转换 (ZodValidationPipe 等)
-  app.useGlobalPipes(new ZodValidationPipe());
-
   // 8. 挂载全局过滤器 (Filter) - 用于捕获所有层级抛出的异常，格式化错误返回 (ZodExceptionFilter 等)
-  app.useGlobalFilters(new ZodExceptionFilter());
 
   // 9. 配置 Swagger 文档
   const config = new DocumentBuilder()
