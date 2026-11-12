@@ -1,5 +1,5 @@
 import { Global, Module } from '@nestjs/common';
-import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 
 import { EnvModule } from './env.module.js';
@@ -10,6 +10,7 @@ import { BusinessException } from '../common/exceptions/business.exception.js';
 import { AllExceptionsFilter } from '../common/filters/all-exception.filter.js';
 import { ZodExceptionFilter } from '../common/filters/zod-exception.filter.js';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor.js';
+import { JwtAuthGuard } from '../common/guards/jwt-auth.guard.js';
 
 @Global()
 @Module({
@@ -41,6 +42,12 @@ import { TransformInterceptor } from '../common/interceptors/transform.intercept
     {
       provide: APP_INTERCEPTOR,
       useClass: TransformInterceptor,
+    },
+
+    // 6. 注册全局 Guard
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard, // 全局注册 JwtAuthGuard，所有路由默认需要身份验证，除非使用 @Public() 装饰器标记为公开访问。
     },
   ],
 })

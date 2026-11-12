@@ -9,7 +9,7 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { ApiResponseWrapper } from '../../common/dto/api-response.dto.js';
 
@@ -26,6 +26,7 @@ import {
 import { GetUsersQueryDto } from './dto/query-user.dto.js';
 
 @ApiTags('用户管理') // @ApiTags 装饰器用于为 Swagger 文档中的该控制器添加标签，方便在 Swagger UI 中进行分类和查找。
+@ApiBearerAuth()
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}

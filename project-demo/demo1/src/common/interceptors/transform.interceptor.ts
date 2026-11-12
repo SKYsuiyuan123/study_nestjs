@@ -6,7 +6,8 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { map, Observable } from 'rxjs';
-import { ConstStr } from '../enum/constant.enum.js';
+
+import { ConstantEnum } from '../enum/constant.enum.js';
 
 // 定义统一的返回结构
 export interface IResponse<T> {
@@ -29,10 +30,10 @@ export class TransformInterceptor<T> implements NestInterceptor<
     next: CallHandler,
   ): Observable<IResponse<T>> {
     // 个别接口不需要格式化返回
-    const noWrap = this.reflect.getAllAndOverride<boolean>(ConstStr.noWrap, [
-      context.getHandler(),
-      context.getClass(),
-    ]);
+    const noWrap = this.reflect.getAllAndOverride<boolean>(
+      ConstantEnum.noWrap,
+      [context.getHandler(), context.getClass()],
+    );
 
     if (noWrap) {
       return next.handle(); // 直接返回，不包装。

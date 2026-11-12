@@ -21,6 +21,8 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
         [ConfigEnum.DB_USERNAME]: z.string().default('root'),
         [ConfigEnum.DB_PASSWORD]: z.string().default('123456'),
         [ConfigEnum.DB_DATABASE]: z.string().default('test'),
+        [ConfigEnum.JWT_SECRET]: z.string().min(16).default('secret'),
+        [ConfigEnum.JWT_EXPIRES_IN]: z.coerce.number().default(900), // 15 minutes in seconds
       }),
     }),
   ],
