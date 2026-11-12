@@ -2,17 +2,16 @@ import { z } from 'zod';
 import { createZodDto } from 'nestjs-zod';
 
 // 定义返回的 Schema
-const UserSchema = z.object({
+const UserDetailResSchema = z.object({
   id: z.number().describe('用户ID'),
   username: z.string().describe('用户名'),
-  password: z.string().describe('用户密码'),
 });
 
 // 获取单个用户 (包装成 类)
-export class UserDto extends createZodDto(UserSchema) {}
+export class UserDetailResDto extends createZodDto(UserDetailResSchema) {}
 
 const UserListSchema = z.object({
-  list: z.array(UserSchema),
+  list: z.array(UserDetailResSchema),
   pageNumber: z.number(),
   pageSize: z.number(),
 });
@@ -28,7 +27,7 @@ const ProfileSchema = z.object({
 });
 
 const UserProfileInfoSchema = z.object({
-  ...UserSchema.shape, // 继承 UserSchema 的属性
+  ...UserDetailResSchema.shape, // 继承 UserSchema 的属性
   profile: z.object(ProfileSchema.shape).nullable().describe('用户详情信息'),
 });
 

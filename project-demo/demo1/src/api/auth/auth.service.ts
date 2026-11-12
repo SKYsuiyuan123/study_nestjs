@@ -43,8 +43,13 @@ export class AuthService {
   }
 
   async login(loginDto: LoginDto) {
-    const user = await this.userRepository.findOneBy({
-      username: loginDto.username,
+    const user = await this.userRepository.findOne({
+      where: { username: loginDto.username },
+      select: {
+        id: true,
+        username: true,
+        password: true, // 👈 强制覆盖 User entity 默认的 select: false
+      },
     });
 
     if (!user) {

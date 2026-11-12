@@ -9,7 +9,12 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { ApiResponseWrapper } from '../../common/dto/api-response.dto.js';
 
@@ -19,7 +24,7 @@ import { UserService } from './user.service.js';
 import { CreateUserDto } from './dto/create-user.dto.js';
 import { UpdateUserDto } from './dto/update-user.dto.js';
 import {
-  UserDto,
+  UserDetailResDto,
   UserListDto,
   UserProfileDto,
 } from './dto/response-user.dto.js';
@@ -33,7 +38,7 @@ export class UserController {
 
   @Post()
   @ApiOperation({ summary: '创建用户' }) // @ApiOperation 装饰器用于为 Swagger 文档中的该接口添加操作说明。
-  @ApiResponseWrapper(UserDto, false, '创建用户') // 使用自定义的 ApiResponseWrapper 装饰器，包装响应数据类型为 UserDto，并指定为非数组类型，描述为 '创建用户'。
+  @ApiResponseWrapper(UserDetailResDto, false, '创建用户') // 使用自定义的 ApiResponseWrapper 装饰器，包装响应数据类型为 UserDto，并指定为非数组类型，描述为 '创建用户'。
   createUser(@Body() createUserDto: CreateUserDto) {
     // dto 已经在 CreateUserDto 中定义了验证规则，NestJS 会自动进行验证，如果验证失败，会抛出异常并返回 400 错误。
     // dto 已经被 nestjs-zod 自动校验过，且类型安全
@@ -60,7 +65,7 @@ export class UserController {
 
   @Get(':id')
   @ApiOperation({ summary: '根据 用户ID 获取用户' })
-  @ApiResponseWrapper(UserDto, false, '获取用户详情') // 使用自定义的 ApiResponseWrapper 装饰器，包装响应数据类型为 UserDto，并指定为非数组类型，描述为 '获取用户详情'。
+  @ApiResponseWrapper(UserDetailResDto, false, '获取用户详情') // 使用自定义的 ApiResponseWrapper 装饰器，包装响应数据类型为 UserDto，并指定为非数组类型，描述为 '获取用户详情'。
   getUserById(@Param('id', ParseIntPipe) id: number) {
     return this.userService.findById(id);
   }

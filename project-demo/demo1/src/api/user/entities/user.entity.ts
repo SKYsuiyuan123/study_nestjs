@@ -19,7 +19,7 @@ export class User {
   @Column({ unique: true }) // 设置唯一约束
   username: string;
 
-  @Column()
+  @Column({ select: false }) // 设置 select: false，表示默认查询时不返回该字段, 如果想返回 password 字段，需要在查询时显式指定 select: ['password']。
   password: string;
 
   @OneToOne('Profile', 'user', { cascade: true }) // 被拥有方：用字符串 'Profile' 指向对方，反向关系是对方的 user 属性
