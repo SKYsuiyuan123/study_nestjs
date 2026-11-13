@@ -7,10 +7,14 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+import { Roles } from '../../common/decorators/roles.decorator.js';
+import { RolesEnum } from '../../common/enum/roles.enum.js';
 import { ApiResponseWrapper } from '../../common/dto/api-response.dto.js';
+import { RoleGuard } from '../../common/guards/role.guard.js';
 
 import { RolesService } from './roles.service.js';
 import { CreateRoleDto, CreateRolesResDto } from './dto/create-role.dto.js';
@@ -19,6 +23,8 @@ import { QueryRoleListResDto, QueryRoleResDto } from './dto/query-role.dto.js';
 
 @ApiTags('角色管理')
 @ApiBearerAuth()
+@Roles(RolesEnum.Admin)
+@UseGuards(RoleGuard)
 @Controller('roles')
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}

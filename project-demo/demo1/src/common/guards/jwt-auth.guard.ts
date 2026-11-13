@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 import { ConstantEnum } from '../enum/constant.enum.js';
 
-@Injectable()
+@Injectable() // 使用了 @Injectable 装饰器，表示这个类可以被 NestJS 的依赖注入系统管理。
 export class JwtAuthGuard extends AuthGuard('jwt') {
   constructor(private readonly reflect: Reflector) {
     super();
