@@ -12,4 +12,9 @@ export enum ConfigEnum {
   // JWT配置
   JWT_SECRET = 'JWT_SECRET',
   JWT_EXPIRES_IN = 'JWT_EXPIRES_IN',
+
+  // Redis配置
+  REDIS_HOST = 'REDIS_HOST',
+  REDIS_PORT = 'REDIS_PORT',
+  REDIS_PASSWORD = 'REDIS_PASSWORD',
 }

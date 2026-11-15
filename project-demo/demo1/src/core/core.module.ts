@@ -5,6 +5,7 @@ import { ZodValidationPipe } from 'nestjs-zod';
 import { EnvModule } from './env.module.js';
 import { OrmModule } from './orm.module.js';
 import { LogModule } from './log.module.js';
+import { RedisModule } from './redis.module.js';
 
 import { BusinessException } from '../common/exceptions/business.exception.js';
 import { AllExceptionsFilter } from '../common/filters/all-exception.filter.js';
@@ -15,7 +16,7 @@ import { RequestMiddleware } from '../common/request/request.middleware.js';
 
 @Global()
 @Module({
-  imports: [EnvModule, OrmModule, LogModule],
+  imports: [EnvModule, OrmModule, LogModule, RedisModule],
   providers: [
     // 1. 先捕获业务异常
     {

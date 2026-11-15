@@ -1,5 +1,4 @@
 services:
-
   db:
     image: mysql
     restart: always
@@ -13,3 +12,32 @@ services:
     restart: always
     ports:
       - 8090:8080
+
+  redis:
+    image: redis:7.2-alpine # 推荐固定大版本号，比 latest 稳定且体积小
+    container_name: nest-redis-demo1
+    restart: always
+    ports:
+      - '6379:6379'
+    # 开启密码验证
+    command: redis-server --requirepass example
+    environment:
+      - TZ=Asia/Shanghai
+
+# # 进入 redis 容器内的命令行
+# docker exec -it nest-redis redis-cli
+
+# # 在 redis 提示符下尝试 ping（此时会提示 NOAUTH 认证失败）
+# 127.0.0.1:6379> ping
+# (error) NOAUTH Authentication required.
+
+# # 输入密码认证
+# 127.0.0.1:6379> auth your_strong_password
+# OK
+
+# # 再次 ping
+# 127.0.0.1:6379> ping
+# PONG
+
+# # 退出
+# 127.0.0.1:6379> exit

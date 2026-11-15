@@ -23,6 +23,10 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
         [ConfigEnum.DB_DATABASE]: z.string().default('test'),
         [ConfigEnum.JWT_SECRET]: z.string().min(16).default('secret'),
         [ConfigEnum.JWT_EXPIRES_IN]: z.coerce.number().default(900), // 15 minutes in seconds
+
+        [ConfigEnum.REDIS_HOST]: z.string().default('localhost'),
+        [ConfigEnum.REDIS_PORT]: z.coerce.number().default(6379),
+        [ConfigEnum.REDIS_PASSWORD]: z.string().default(''),
       }),
     }),
   ],
