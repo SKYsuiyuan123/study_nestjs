@@ -14,7 +14,7 @@ import { LoggerModule } from 'nestjs-pino';
                 'user-agent': req.headers['user-agent'],
               },
               id: req.id,
-              ip: req.ip,
+              ip: req.raw.ip || req.raw.socket?.remoteAddress || req.ip,
               // 只截取 Body，且最好限制大小（这里简单演示直接透传，配合下面的 redact 使用）
               body: req.raw.body,
             };

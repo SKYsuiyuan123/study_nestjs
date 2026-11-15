@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { RequestMethod } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { AppModule } from './app.module.js';
 
@@ -9,12 +10,19 @@ import { AppModule } from './app.module.js';
 
 async function bootstrap() {
   // 1. 创建应用 (开启日志缓冲)
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     bufferLogs: true,
   });
 
   // 2. 接管日志系统 (尽早接管，确保后续所有操作都能被记录)
   app.useLogger(app.get(Logger));
+
+  // 信任代理：告诉 NestJS 信任前面的 Nginx/Docker 网关
+  // true: 这表示信任所有代理。虽然在开发环境或内网环境方便，但在生产环境中如果直接暴露在公网，这存在安全风险（攻击者可以伪造 X-Forwarded-For 头）
+  // 更推荐的做法是根据你的部署架构设置具体的代理层数或 IP 段：
+  //  - 如果 应用前面只有一层 Nginx：app.set('trust proxy', 1);
+  //  - 如果 应用前面有多层代理（如 Cloudflare → Nginx → 应用）：可以设置为具体的 IP 段或 CIDR
+  app.set('trust proxy', true); // 如果应用部署在 Nginx 或其他反向代理后面，需要开启信任代理，才能正确获取客户端 IPt
 
   // 3. 开启跨域 (CORS) (通常放在请求处理的最外层)
   app.enableCors({
