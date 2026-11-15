@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like, Repository } from 'typeorm';
 import { PinoLogger } from 'nestjs-pino';
+import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
 
 import { BusinessException } from '../../common/exceptions/business.exception.js';
 
@@ -14,8 +15,9 @@ import { User } from './entities/user.entity.js';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly pinoLogger: PinoLogger,
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {
     // 设置当前类的上下文 (日志里会显示 [AppController] 前缀)
     this.pinoLogger.setContext(UserService.name);
@@ -107,16 +109,31 @@ export class UserService {
     // .getMany(); // getMany() 返回实体对象，字段名为实体类中定义的属性名。
   }
 
-  findById(id: number): Promise<User | null> {
-    // return this.userRepository.findOneBy({ id });
-    return (
-      this.userRepository
-        .createQueryBuilder('users')
-        // .innerJoinAndSelect('users.profile', 'profile') // 使用 innerJoinAndSelect 关联查询 profile 表，如果用户没有 profile，则查询不到用户。
-        .leftJoinAndSelect('users.profile', 'profile') // 使用 leftJoinAndSelect 关联查询 profile 表，避免用户没有 profile 时查询不到用户。
-        .where('users.id = :id', { id })
-        .getOne()
-    );
+  async findById(id: number): Promise<User | null> {
+    const cacheKey = `user:${id}`;
+
+    // 1. 先从缓存中获取用户信息
+    const cached = await this.cacheManager.get<User>(cacheKey);
+    if (cached) {
+      this.pinoLogger.info({ id }, '从缓存中获取用户信息');
+      return cached;
+    }
+
+    // 2. 如果缓存中没有，则从数据库中查询用户信息
+    const user = await this.userRepository.findOneBy({ id });
+
+    // 或者使用 QueryBuilder 查询用户信息，并关联查询 profile 表。
+    // const user = await this.userRepository
+    //   .createQueryBuilder('users')
+    //   // .innerJoinAndSelect('users.profile', 'profile') // 使用 innerJoinAndSelect 关联查询 profile 表，如果用户没有 profile，则查询不到用户。
+    //   .leftJoinAndSelect('users.profile', 'profile') // 使用 leftJoinAndSelect 关联查询 profile 表，避免用户没有 profile 时查询不到用户。
+    //   .where('users.id = :id', { id })
+    //   .getOne();
+
+    // 3. 将查询到的用户信息存入缓存，设置过期时间为 60 秒
+    await this.cacheManager.set(cacheKey, user, 60 * 1000); // 注意：单位是毫秒，60 * 1000 = 60 秒
+
+    return user;
   }
 
   async updateById(id: number, updateUserDto: UpdateUserDto): Promise<User> {

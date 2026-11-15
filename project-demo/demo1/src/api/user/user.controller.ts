@@ -8,6 +8,7 @@ import {
   Patch,
   Delete,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -15,8 +16,10 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 import { ApiResponseWrapper } from '../../common/dto/api-response.dto.js';
+import { UserCacheInterceptor } from '../../common/interceptors/custom-cache.interceptor.js';
 
 import { User } from './entities/user.entity.js';
 import { UserService } from './user.service.js';
@@ -64,6 +67,17 @@ export class UserController {
   }
 
   @Get(':id')
+  // @UseInterceptors(CacheInterceptor) // 使用 CacheInterceptor 拦截器来缓存该接口的响应结果，避免频繁访问数据库，提高性能。
+  // 直接使用 CacheInterceptor 会有一些问题：
+  // @nestjs/cache-manager 自带的 CacheInterceptor 默认只会用请求的 URL 作为 Key。
+  // 如果你的接口是 /user/profile，且当前用户是 sky 访问，URL 就是 /user/profile。下一个用户 admin 访问，URL 还是 /user/profile。
+  // CacheInterceptor 就会直接把 sky 的数据返回给 admin，这是灾难性的数据泄露。
+  // 所以，绝对不能在有用户状态区分的接口上直接裸用默认的 CacheInterceptor。
+  @UseInterceptors(UserCacheInterceptor)
+
+  // (这里缓存的数据是基于请求参数的，所以不同的请求参数会有不同的缓存结果，并且缓存数据是存放在 CacheManager 中的(目前的对接的 Redis 中)。)
+  @CacheKey('user_detail') // 使用 CacheKey 装饰器来指定缓存的 key，这样可以避免缓存冲突。
+  @CacheTTL(60 * 1000) // 使用 CacheTTL 装饰器来指定缓存的过期时间，这里设置为 60 秒。
   @ApiOperation({ summary: '根据 用户ID 获取用户' })
   @ApiResponseWrapper(UserDetailResDto, false, '获取用户详情') // 使用自定义的 ApiResponseWrapper 装饰器，包装响应数据类型为 UserDto，并指定为非数组类型，描述为 '获取用户详情'。
   getUserById(@Param('id', ParseIntPipe) id: number) {
