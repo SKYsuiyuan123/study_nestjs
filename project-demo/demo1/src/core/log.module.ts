@@ -15,6 +15,8 @@ import { LoggerModule } from 'nestjs-pino';
               },
               id: req.id,
               ip: req.ip,
+              // 只截取 Body，且最好限制大小（这里简单演示直接透传，配合下面的 redact 使用）
+              body: req.raw.body,
             };
           },
           res(res) {
@@ -46,13 +48,15 @@ import { LoggerModule } from 'nestjs-pino';
             req.url === '/.well-known/appspecific/com.chrome.devtools.json',
         },
 
+        // 极其重要的脱敏配置（屏蔽敏感信息）
         redact: {
           paths: [
-            'req.headers.authorization',
             'req.body.password',
+            'req.body.oldPassword',
             'req.body.token',
+            'req.headers.authorization',
           ],
-          censor: '[REDACTED]',
+          censor: '[REDACTED]', // 被屏蔽的内容会变成这个字符串
         },
       },
     }),

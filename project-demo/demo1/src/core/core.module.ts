@@ -1,4 +1,4 @@
-import { Global, Module } from '@nestjs/common';
+import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 
@@ -11,6 +11,7 @@ import { AllExceptionsFilter } from '../common/filters/all-exception.filter.js';
 import { ZodExceptionFilter } from '../common/filters/zod-exception.filter.js';
 import { TransformInterceptor } from '../common/interceptors/transform.interceptor.js';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard.js';
+import { RequestMiddleware } from '../common/request/request.middleware.js';
 
 @Global()
 @Module({
@@ -51,4 +52,9 @@ import { JwtAuthGuard } from '../common/guards/jwt-auth.guard.js';
     },
   ],
 })
-export class CoreModule {}
+export class CoreModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    // 使用 NestJS 的中间件功能来注册中间件，例如：使用 request.middleware.ts 中间件来记录请求体
+    consumer.apply(RequestMiddleware).forRoutes('*'); // 这里的 '*' 表示对所有路由生效
+  }
+}
