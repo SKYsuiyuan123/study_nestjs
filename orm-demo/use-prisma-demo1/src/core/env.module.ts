@@ -22,6 +22,7 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
         [ConfigEnum.DB_PASSWORD]: z.string().default('123456'),
         [ConfigEnum.DB_DATABASE]: z.string().default('test'),
         [ConfigEnum.DATABASE_URL]: z.string().default('localhost'),
+        [ConfigEnum.DB_CONNECTION_LIMIT]: z.coerce.number().default(10),
       }),
     }),
   ],
