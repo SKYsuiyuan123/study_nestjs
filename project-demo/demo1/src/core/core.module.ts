@@ -7,6 +7,8 @@ import { OrmModule } from './orm.module.js';
 import { LogModule } from './log.module.js';
 import { RedisModule } from './redis.module.js';
 import { CacheConfigModule } from './cacheConfig.module.js';
+import { MailModule } from './mail.module.js';
+import { ServiceModule } from './service.module.js';
 
 import { BusinessException } from '../common/exceptions/business.exception.js';
 import { AllExceptionsFilter } from '../common/filters/all-exception.filter.js';
@@ -17,7 +19,15 @@ import { RequestMiddleware } from '../common/request/request.middleware.js';
 
 @Global()
 @Module({
-  imports: [EnvModule, OrmModule, LogModule, RedisModule, CacheConfigModule],
+  imports: [
+    EnvModule,
+    OrmModule,
+    LogModule,
+    RedisModule,
+    CacheConfigModule,
+    MailModule,
+    ServiceModule,
+  ],
   providers: [
     // 1. 先捕获业务异常
     {

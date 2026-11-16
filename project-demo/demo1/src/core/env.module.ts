@@ -27,6 +27,12 @@ const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
         [ConfigEnum.REDIS_HOST]: z.string().default('localhost'),
         [ConfigEnum.REDIS_PORT]: z.coerce.number().default(6379),
         [ConfigEnum.REDIS_PASSWORD]: z.string().default(''),
+
+        [ConfigEnum.MAIL_HOST]: z.string().default('smtp.example.com'),
+        [ConfigEnum.MAIL_PORT]: z.coerce.number().default(587),
+        [ConfigEnum.MAIL_USER]: z.string(),
+        [ConfigEnum.MAIL_PASSWORD]: z.string(),
+        [ConfigEnum.MAIL_FROM]: z.string(),
       }),
     }),
   ],
