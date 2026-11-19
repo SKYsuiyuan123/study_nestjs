@@ -1,4 +1,10 @@
-import { Global, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {
+  Global,
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 
@@ -67,6 +73,12 @@ import { RequestMiddleware } from '../common/request/request.middleware.js';
 export class CoreModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // 使用 NestJS 的中间件功能来注册中间件，例如：使用 request.middleware.ts 中间件来记录请求体
-    consumer.apply(RequestMiddleware).forRoutes('*'); // 这里的 '*' 表示对所有路由生效
+    consumer
+      .apply(RequestMiddleware)
+      .exclude(
+        { path: 'health', method: RequestMethod.GET },
+        'api-docs/{*splat}',
+      ) // 排除健康检查和 Swagger 文档路由，不应用中间件
+      .forRoutes('{*splat}'); // 应用中间件到所有路由
   }
 }
