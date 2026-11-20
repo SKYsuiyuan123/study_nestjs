@@ -32,10 +32,14 @@ export class AppController {
   healthCheck(): {
     status: string;
     timestamp: string;
+    [key: string]: any;
   } {
+    const logMemory = this.appService.logMemory();
+
     return {
       status: 'ok',
       timestamp: new Date().toISOString(),
+      ...logMemory,
     };
   }
 
